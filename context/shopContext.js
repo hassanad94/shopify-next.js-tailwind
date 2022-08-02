@@ -4,6 +4,7 @@ import { createCheckout, updateCheckout } from '../lib/shopify'
 const CartContext = createContext()
 
 export default function ShopProvider({ children }) {
+
   const [cart, setCart] = useState([])
   const [cartOpen, setCartOpen] = useState(false)
   const [checkoutId, setCheckoutId] = useState('')
@@ -69,7 +70,7 @@ export default function ShopProvider({ children }) {
 
     localStorage.setItem("checkout_id", JSON.stringify([updatedCart, newCheckout]))
 
-    if (cart.length === 1) {
+    if (cart.length >= 1) {
       setCartOpen(false)
     }
   }
